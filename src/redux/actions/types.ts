@@ -1,0 +1,4 @@
+export const SET_USER = "SET_USER";
+export const SET_CONTENT = "SET_CONTENTS";
+export const SIDEBAR_CLICKED = "SIDEBAR_CLICKED";
+export const OVERLAY_CLICKED = "OVERLAY_CLICKED";

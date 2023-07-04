@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { authService } from "./firebase/config";
+import Home from "./routes/Home";
+import { useDispatch, useSelector } from "react-redux";
+import { SetUser } from "./redux/actions/user_action";
+import ToDoListView from "./components/ToDoListView";
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    authService.onAuthStateChanged((user: any) => {
+      dispatch(SetUser(user));
+      setInit(true);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {init ? (
+        Object.keys(user).length !== 0 ? (
+          <ToDoListView />
+        ) : (
+          <Home />
+        )
+      ) : (
+        <>Loading</>
+      )}
     </div>
   );
 }
