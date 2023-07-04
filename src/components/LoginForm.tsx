@@ -2,21 +2,25 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { authService } from "../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider,  signInWithPopup } from "firebase/auth";
 
 const LoginForm = ({ setMode }: any) => {
+
   const provider = new GoogleAuthProvider();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const modeConverToSignUp = () => {
     setMode("signup");
   };
+
   const emailOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
   const passwordOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
+
   const onLoginSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (email === "") {
@@ -27,6 +31,7 @@ const LoginForm = ({ setMode }: any) => {
       alert("Please enter your password.");
       return;
     }
+
     await signInWithEmailAndPassword(authService, email, password)
       .then((data) => console.log(data))
       .catch((err) => {
@@ -35,9 +40,11 @@ const LoginForm = ({ setMode }: any) => {
         setPassword("");
       });
   };
+
   const onGoogleLogin = () => {
-    signInWithRedirect(authService, provider);
+    signInWithPopup(authService, provider);
   };
+
   return (
     <form className="flex flex-col items-center" onSubmit={onLoginSubmit}>
       <input
