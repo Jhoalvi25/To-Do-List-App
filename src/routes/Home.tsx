@@ -20,7 +20,7 @@ const Home = () => {
           <p className="text-center">
             MadeBy
             <a
-              href=""
+              href="https://jhoalvi25.github.io/Pagina_portafolio/" target="_blank"
               className="font-bold text-[#1D324C] transition duration-200 ease-in-out hover:text-[blue] active:text-[blue]">
               Jhoalvi
             </a>

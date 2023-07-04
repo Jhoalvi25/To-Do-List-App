@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { authService } from "../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { GoogleAuthProvider,  signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider,  signInWithRedirect } from "firebase/auth";
 
 const LoginForm = ({ setMode }: any) => {
 
@@ -42,7 +42,7 @@ const LoginForm = ({ setMode }: any) => {
   };
 
   const onGoogleLogin = () => {
-    signInWithPopup(authService, provider);
+    signInWithRedirect(authService, provider);
   };
 
   return (

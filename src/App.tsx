@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { SetUser } from "./redux/actions/user_action";
 import ToDoListView from "./components/ToDoListView";
+import Loading from "./components/Loading";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
           <Home />
         )
       ) : (
-        <>Loading</>
+        <Loading/>
       )}
     </div>
   );

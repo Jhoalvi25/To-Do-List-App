@@ -31,4 +31,18 @@ cd todo-list-app
 npm install
 ```
 
-4. Great, if you followed the steps, your app should be running on a local server.
+4. Great, if you follow all the steps, you should be able to run the app on a local server, with the following command.
+
+```bash
+npm run start
+```
+
+## Documentation
+
+The documentation is located in the following path: todo-list-app/docs.
+
+```bash
+cd todo-list-app/docs
+```
+
+you can open the "index.html" file with any browser or with the "Open with Live Server" plugin (recommended)

@@ -2,8 +2,8 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { useSelector } from "react-redux";
 import { dbService, storageService } from "../firebase/config";
-import { GoSmiley } from "react-icons/go";
-import { ChangeEvent, MouseEvent } from "react";
+import { MdDeleteForever, MdDone } from "react-icons/md";
+import { ChangeEvent} from "react";
 
 const ToDoListContent = () => {
   const contentList = useSelector((state: any) => state.content);
@@ -53,9 +53,9 @@ const ToDoListContent = () => {
               />
 
               {item.check ? (
-                <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-[40px] p-1 border-[red] border-2 rounded-lg flex items-center justify-center">
-                  <GoSmiley className="text-[red] text-[30px] mr-1" />
-                  <strong className="text-[red]">Completed!</strong>
+                <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-[40px] p-1 border-[green] border-2 rounded-lg flex items-center justify-center">
+                  <MdDone className="text-[green] text-[30px] mr-1" />
+                  <strong className="text-[green]">Completed!</strong>
                 </div>
               ) : (
                 <></>
@@ -69,7 +69,7 @@ const ToDoListContent = () => {
                   onDeleteButton(e, contentList[i].id, contentList[i].image)
                 }
               >
-               Delete
+              <MdDeleteForever/>
               </button>
             </div>
           </li>

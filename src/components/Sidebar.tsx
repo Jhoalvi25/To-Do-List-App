@@ -3,6 +3,7 @@ import SidebarProgressBar from "./SidebarProgressBar";
 import { signOut } from "firebase/auth";
 import { authService, dbService } from "../firebase/config";
 import { deleteDoc, doc } from "firebase/firestore";
+import { MdAccountCircle } from "react-icons/md";
 
 const Sidebar = () => {
   const isClicked = useSelector((state: any) => state.sidebar.isClicked);
@@ -27,7 +28,7 @@ const Sidebar = () => {
       className={`w-[280px] p-5 fixed top-0 right-0 z-40 h-[100vh] bg-white transition-all duration-200 ease-in-out flex flex-col ${
         isClicked ? "translate-x-0" : "translate-x-[100%]"
       }`}>
-      <strong className="text-center block mb-10">{email} Sir</strong>
+      <strong className="text-center block mb-10"><MdAccountCircle/>{email} </strong>
 
       <SidebarProgressBar />
 
@@ -47,9 +48,9 @@ const Sidebar = () => {
       </footer>
 
       <p className="text-center">
-        MadeBy{" "}
+        MadeBy
         <a
-          href=""
+          href="https://jhoalvi25.github.io/Pagina_portafolio/" target="_blank"
           className="font-bold text-[#1D324C] transition duration-200 ease-in-out hover:text-[blue] active:text-[blue]">
           Jhoalvi
         </a>
